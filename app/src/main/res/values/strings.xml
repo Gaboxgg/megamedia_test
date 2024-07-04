@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">MegaMedia test</string>
+    <string name="notUrl">Url not available</string>
+    <string name="internet">You need an Internet connection</string>
+    <string name="noRecord">No record file available</string>
+    <string name="tryAgain">Empty list or error,try again later&#8230;</string>
+</resources>

@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1061749108217",
+    "project_id": "megamedia-test",
+    "storage_bucket": "megamedia-test.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1061749108217:android:c9eabf0def09015a6e2128",
+        "android_client_info": {
+          "package_name": "com.example.megamediatest"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBm1fHOe_2KAo3dTMBHYdnqdI4X-MwVaTA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
