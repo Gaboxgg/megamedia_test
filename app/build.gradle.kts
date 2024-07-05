@@ -8,6 +8,7 @@ android {
     namespace = "com.example.megamediatest"
     compileSdk = 34
 
+
     defaultConfig {
         applicationId = "com.example.megamediatest"
         minSdk = 24
@@ -48,7 +49,9 @@ android {
             excludes += "/META-INF/{AL2.0,LGPL2.1}"
         }
     }
+
 }
+
 
 dependencies {
 
@@ -74,4 +77,11 @@ dependencies {
     implementation("com.google.firebase:firebase-database-ktx")
     implementation("com.google.code.gson:gson:2.8.2")
     implementation ("com.github.bumptech.glide:glide:4.16.0")
+
+    testImplementation("org.junit.jupiter:junit-jupiter-api:5.7.1")
+    testImplementation("org.junit.jupiter:junit-jupiter:5.7.1")
+    testRuntimeOnly("org.junit.platform:junit-platform-launcher")
+    //testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:5.8.1")
+    //testImplementation("org.jetbrains.kotlin:kotlin-test")
+    testImplementation("org.mockito:mockito-core:5.2.0")
 }
