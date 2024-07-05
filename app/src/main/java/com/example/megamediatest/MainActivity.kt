@@ -1,16 +1,14 @@
 package com.example.megamediatest
 
 import android.content.Context
-import android.net.ConnectivityManager
-import android.net.NetworkCapabilities
 import android.os.Bundle
 import android.util.Log
-import android.widget.Toast
 import androidx.activity.ComponentActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.megamediatest.adapters.MyRecyclerViewAdapter
 import com.example.megamediatest.data.filePojo
+import com.example.megamediatest.utils.Functions
 import com.google.android.gms.tasks.OnCompleteListener
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseReference
@@ -19,20 +17,25 @@ import com.google.firebase.database.getValue
 
 class MainActivity : ComponentActivity() {
     private var listOfPath = listOf("movie_1","movie_2","movie_3")
-    var myDataList : ArrayList<filePojo> = arrayListOf()
-    lateinit var mContext: Context
-    lateinit var rvFiles: RecyclerView
+    private var myDataList : ArrayList<filePojo> = arrayListOf()
+    private lateinit var mContext: Context
+    private lateinit var rvFiles: RecyclerView
+    private lateinit var util : Functions
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
         setContentView(R.layout.activity_main)
         rvFiles = findViewById<RecyclerView>(R.id.rvFiles)
 
         mContext = this
-        if(isOnline(mContext))
+
+        util = Functions(mContext)
+
+        if(util.isOnline())
             initMyDataList(listOfPath)
         else
-            showErrorDialog()
+            util.showErrorDialog(R.string.tryAgain.toString())
     }
 
     fun initMyDataList(listOfPath: List<String>) : Boolean {
@@ -60,34 +63,6 @@ class MainActivity : ComponentActivity() {
         return true
     }
 
-    fun isOnline(context: Context): Boolean {
-        val connectivityManager =
-            context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
-        if (connectivityManager != null) {
-            val capabilities =
-                connectivityManager.getNetworkCapabilities(connectivityManager.activeNetwork)
-            if (capabilities != null) {
-                if (capabilities.hasTransport(NetworkCapabilities.TRANSPORT_CELLULAR)) {
-                    Log.i("Internet", "NetworkCapabilities.TRANSPORT_CELLULAR")
-                    return true
-                } else if (capabilities.hasTransport(NetworkCapabilities.TRANSPORT_WIFI)) {
-                    Log.i("Internet", "NetworkCapabilities.TRANSPORT_WIFI")
-                    return true
-                } else if (capabilities.hasTransport(NetworkCapabilities.TRANSPORT_ETHERNET)) {
-                    Log.i("Internet", "NetworkCapabilities.TRANSPORT_ETHERNET")
-                    return true
-                }
-            }else{
-                return false
-            }
-        }
-        return false
-    }
-
-    private fun showErrorDialog() {
-        Toast.makeText(mContext, R.string.tryAgain, Toast.LENGTH_LONG).show()
-    }
-
     fun initTemplate(fileList: List<filePojo>) : Boolean {
         if(fileList.isNotEmpty()) {
             rvFiles.layoutManager = LinearLayoutManager(mContext)
@@ -98,9 +73,8 @@ class MainActivity : ComponentActivity() {
 
             return true
         }else{
-            Toast.makeText(mContext,R.string.noRecord,Toast.LENGTH_LONG).show()
+            util.showErrorDialog(R.string.noRecord.toString())
             return false
         }
     }
 }
-

@@ -49,7 +49,6 @@ android {
             excludes += "/META-INF/{AL2.0,LGPL2.1}"
         }
     }
-
 }
 
 
@@ -64,6 +63,7 @@ dependencies {
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.material3)
     implementation(libs.material)
+    implementation(libs.core.ktx)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
@@ -75,6 +75,7 @@ dependencies {
     implementation(platform("com.google.firebase:firebase-bom:33.1.1"))
     implementation("com.google.firebase:firebase-analytics")
     implementation("com.google.firebase:firebase-database-ktx")
+
     implementation("com.google.code.gson:gson:2.8.2")
     implementation ("com.github.bumptech.glide:glide:4.16.0")
 
@@ -84,4 +85,7 @@ dependencies {
     //testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:5.8.1")
     //testImplementation("org.jetbrains.kotlin:kotlin-test")
     testImplementation("org.mockito:mockito-core:5.2.0")
+
+    // Core library
+    androidTestImplementation("androidx.test:core:1.5.0")
 }
