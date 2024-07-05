@@ -18,7 +18,7 @@ class MainActivityKtTest {
 
     @Before
     fun setUp(){
-        MockitoAnnotations.openMocks(this);
+        MockitoAnnotations.openMocks(this)
         myDataListEmpty = arrayListOf()
         sortNamedFiles = listOf("movie_1","movie_2","movie_3")
         fileList = arrayListOf()

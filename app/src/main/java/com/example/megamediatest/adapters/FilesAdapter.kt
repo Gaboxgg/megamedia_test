@@ -73,14 +73,6 @@ class MyRecyclerViewAdapter internal constructor( context: Context?,
         }
     }
 
-    fun getItem(id: Int): filePojo {
-        return mFiles[id]
-    }
-
-    fun setClickListener(itemClickListener: ItemClickListener?) {
-        this.mClickListener = itemClickListener
-    }
-
     interface ItemClickListener {
         fun onItemClick(view: View?, position: Int)
     }
