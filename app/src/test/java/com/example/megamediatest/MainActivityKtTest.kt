@@ -1,6 +1,7 @@
 package com.example.megamediatest
 
 import com.example.megamediatest.data.filePojo
+import com.example.megamediatest.presenter.ArticlePresenter
 import com.example.megamediatest.utils.Functions
 import org.junit.Before
 import org.junit.Test
@@ -33,23 +34,23 @@ class MainActivityKtTest {
 
     @Test
     fun initDataEmptyTest() {
-        val mainActivity = mock(MainActivity::class.java)
-        Mockito.`when`(mainActivity. initMyDataList(listOf())).thenReturn(true)
-        assertTrue(mainActivity.initMyDataList(listOf()))
+        val articlePresenter = mock(ArticlePresenter::class.java)
+        Mockito.`when`(articlePresenter.initMyDataList(listOf(), arrayListOf())).thenReturn(true)
+        assertTrue(articlePresenter. initMyDataList(listOf(), arrayListOf()))
     }
 
     @Test
     fun initTemplateTest() {
-        val mainActivity = mock(MainActivity::class.java)
-        `when`(mainActivity. initTemplate(fileList)).thenReturn(true)
-        assertTrue(mainActivity.initTemplate(fileList))
+        val articlePresenter = mock(ArticlePresenter::class.java)
+        `when`(articlePresenter. initTemplate(fileList)).thenReturn(true)
+        assertTrue(articlePresenter. initTemplate(fileList))
     }
 
     @Test
     fun initTemplateEmptyTest() {
-        val mainActivity = mock(MainActivity::class.java)
-        Mockito.`when`(mainActivity. initTemplate(arrayListOf())).thenReturn(false)
-        assertTrue(!mainActivity.initMyDataList(listOf()))
+        val articlePresenter = mock(ArticlePresenter::class.java)
+        Mockito.`when`(articlePresenter.initTemplate(arrayListOf())).thenReturn(false)
+        assertTrue(!articlePresenter.initTemplate(arrayListOf()))
     }
 
     @Test
